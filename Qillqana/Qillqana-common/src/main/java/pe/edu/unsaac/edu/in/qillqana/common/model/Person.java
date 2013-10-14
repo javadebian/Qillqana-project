@@ -1,6 +1,6 @@
-package pe.edu.unsaac.edu.in.qillqana.common.modelo;
+package pe.edu.unsaac.edu.in.qillqana.common.model;
 
-public class Persona {
+public class Person {
 	private String id;
 	private String nombres;
 	private String apPaterno;
