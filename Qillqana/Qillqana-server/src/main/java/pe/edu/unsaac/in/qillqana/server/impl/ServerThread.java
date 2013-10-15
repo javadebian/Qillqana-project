@@ -62,6 +62,7 @@ public class ServerThread extends Thread {
 					break;
 				}
 			}
+			// This two methods will be execute when a exit command is received or the connection fails 
 			disposeSession();
 			closeStreams();
 		} catch (EOFException e) {
