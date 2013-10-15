@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>pe.edu.unsaac.edu.in</groupId>
+    <groupId>pe.edu.unsaac.in</groupId>
     <artifactId>Qillqana</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>

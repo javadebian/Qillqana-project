@@ -7,8 +7,8 @@
     <artifactId>Qillqana</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>Qillqana-common</artifactId>
-  <name>Qillqana-common</name>
+  <artifactId>Qillqana-client-common</artifactId>
+  <name>Qillqana-client-common</name>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

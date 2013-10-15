@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>pe.edu.unsaac.edu.in</groupId>
+	<groupId>pe.edu.unsaac.in</groupId>
 	<artifactId>Qillqana</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
@@ -32,6 +32,7 @@
 		<module>Qillqana-common</module>
     <module>Qillqana-server</module>
     <module>Qillqana-client.swing</module>
+    <module>Qillqana-client-common</module>
   </modules>
 	<build>
 		<plugins>

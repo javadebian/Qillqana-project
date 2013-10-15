@@ -4,7 +4,7 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>pe.edu.unsaac.edu.in</groupId>
+		<groupId>pe.edu.unsaac.in</groupId>
 		<artifactId>Qillqana</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
@@ -14,36 +14,4 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.2.1</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>java</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<mainClass>pe.edu.unsaac.edu.in.qillqana.server.ServerApp</mainClass>
-					<arguments>
-						<argument>foo</argument>
-						<argument>bar</argument>
-					</arguments>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 </project>
