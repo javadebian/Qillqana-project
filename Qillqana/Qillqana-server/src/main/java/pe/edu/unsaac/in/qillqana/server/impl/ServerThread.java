@@ -34,47 +34,35 @@ public class ServerThread extends Thread {
 			Gson translator = new Gson();
 			boolean _break = false;
 			while (!_break && (line = in.readLine()) != null) {
-				// TODO Try to move this code another file like Protocol or like this
+				// TODO Try to move this code another file like Protocol.java or
+				// like this
 				// Read the command and the process it
 				prototype = translator.fromJson(line, Command.class);
 				// Here begins the protocol implementation
 				switch (prototype.getName()) {
 				// We will to process the control commands here
-				case "message":
-					logger.info("Message received, it says:"
-							+ prototype.getParameter("body"));
+				case "login":
+					// Create a query for the database
+					// if the user is a valid student put him to the transitory list
+					// if the user is a valid teacher put him to the session list directly
 					break;
-				case "enable":
-					// Here we can enable to a student to write in the
-					// whiteboard
-					switch (prototype.getParameter("feature").toString()) {
-					case "talk":
-						break;
-					case "write":
-						break;
-					}
+				case "session_list":
+					// Return the list session from the client, often retrieve to student sessions
 					break;
-				case "disable":
-					// Here we can disable to a student to write in the
-					// whiteboard
-					switch (prototype.getParameter("feature").toString()) {
-					case "talk":
-						break;
-					case "write":
-						break;
-					}
+				case "session":
+					// Change a user from the temp list to Correct session list
 					break;
 				case "exit":
 					logger.info("EXIT command was received");
-					// TODO notify to the system that this session is killed
 					_break = true;
 					break;
 				default:
 					// Here we will to resend other commands types to the
-					// clients connected
+					// clients connected like shape commands, message commands, etc
 					break;
 				}
 			}
+			disposeSession();
 			closeStreams();
 		} catch (EOFException e) {
 			logger.severe("The connection with client fails");
@@ -83,6 +71,11 @@ public class ServerThread extends Thread {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void disposeSession() {
+		// TODO notify to the system that this session is killed
+		// clean the session from all lists
 	}
 
 	private void closeStreams() {
@@ -95,7 +88,6 @@ public class ServerThread extends Thread {
 		} catch (IOException | InterruptedException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	private void initStreams() {
@@ -106,7 +98,6 @@ public class ServerThread extends Thread {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 }
