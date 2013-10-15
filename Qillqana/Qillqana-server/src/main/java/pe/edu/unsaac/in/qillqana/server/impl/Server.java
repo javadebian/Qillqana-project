@@ -1,4 +1,4 @@
-package pe.edu.unsaac.in.qillqana.server.implementacion;
+package pe.edu.unsaac.in.qillqana.server.impl;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -20,8 +20,8 @@ public class Server {
 
 	public void initServer() {
 		try {
-			logger.info("Starting at "+port);
 			ssocket = new ServerSocket(port);
+			logger.info("Server started");
 			while (true) {
 				ServerThread sthread=new ServerThread(ssocket.accept());
 				sthread.start();

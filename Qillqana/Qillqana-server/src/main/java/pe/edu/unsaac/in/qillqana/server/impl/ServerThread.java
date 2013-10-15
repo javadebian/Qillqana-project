@@ -1,4 +1,4 @@
-package pe.edu.unsaac.in.qillqana.server.implementacion;
+package pe.edu.unsaac.in.qillqana.server.impl;
 
 import java.io.BufferedReader;
 import java.io.EOFException;
@@ -23,10 +23,11 @@ public class ServerThread extends Thread{
 	@Override
 	public void run() {
 		initStreams();
-		
 		try {
 			String line="";
 			while((line=in.readLine())!=null){
+				// Read the command and the process it
+				
 				System.out.println("Receiving: "+line);
 				out.println("Returning: "+line);
 			}
