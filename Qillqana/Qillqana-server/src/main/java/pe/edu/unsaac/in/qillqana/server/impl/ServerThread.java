@@ -8,6 +8,11 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.logging.Logger;
 
+import com.google.gson.Gson;
+
+import pe.edu.unsaac.in.qillqana.common.commands.Command;
+import pe.edu.unsaac.in.qillqana.common.commands.MessageCommad;
+
 public class ServerThread extends Thread{
 	
 	private static Logger logger=Logger.getLogger(ServerThread.class.getName());
@@ -25,8 +30,14 @@ public class ServerThread extends Thread{
 		initStreams();
 		try {
 			String line="";
+			Command cmd;
+			Gson translator=new Gson();
 			while((line=in.readLine())!=null){
 				// Read the command and the process it
+				cmd=translator.fromJson(line, Command.class);
+				if(cmd instanceof MessageCommad){
+					System.out.println("Ha llegado un mensaje");
+				}
 				
 				System.out.println("Receiving: "+line);
 				out.println("Returning: "+line);
