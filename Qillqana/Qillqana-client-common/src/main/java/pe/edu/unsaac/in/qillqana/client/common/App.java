@@ -7,22 +7,26 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import pe.edu.unsaac.in.qillqana.common.command.Command;
+
 import com.google.gson.Gson;
 
-import pe.edu.unsaac.in.qillqana.common.commands.MessageCommad;
-
 public class App {
+	@SuppressWarnings("unused")
 	public static void main(String[] args) throws UnknownHostException,
-			IOException {
-		MessageCommad cmd = new MessageCommad();
-		cmd.setMessageBody("Hola mundo");
+			IOException, InterruptedException {
+		Command cmd = new Command();
+		cmd.setName("message");
+		cmd.addParameter("body", "Hola mundo");
 		Socket socket = new Socket("localhost", 1234);
 		PrintWriter out = new PrintWriter(socket.getOutputStream(),true);
 		BufferedReader in = new BufferedReader(new InputStreamReader(
 				socket.getInputStream()));
 		Gson translator = new Gson();
 		out.println(translator.toJson(cmd));
-		System.out.println(in.readLine());
+		Thread.sleep(5000);
+		cmd.setName("exit");
+		out.println(translator.toJson(cmd));
 		socket.close();
 	}
 }

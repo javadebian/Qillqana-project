@@ -1,4 +1,4 @@
-package pe.edu.unsaac.in.qillqana.common.commands;
+package pe.edu.unsaac.in.qillqana.common.command;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,6 +28,10 @@ public class Command {
 	}
 	public void setParameters(Map<String, Object> parameters) {
 		this.parameters = parameters;
+	}
+	
+	public Object getParameter(String key) {
+		return parameters.get(key);
 	}
 	
 	public void addParameter(String key,Object value){

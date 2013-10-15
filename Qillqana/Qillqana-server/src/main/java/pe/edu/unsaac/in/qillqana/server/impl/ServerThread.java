@@ -8,52 +8,86 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.logging.Logger;
 
+import pe.edu.unsaac.in.qillqana.common.command.Command;
+
 import com.google.gson.Gson;
 
-import pe.edu.unsaac.in.qillqana.common.commands.Command;
-import pe.edu.unsaac.in.qillqana.common.commands.MessageCommad;
+public class ServerThread extends Thread {
 
-public class ServerThread extends Thread{
-	
-	private static Logger logger=Logger.getLogger(ServerThread.class.getName());
-	
+	private static Logger logger = Logger.getLogger(ServerThread.class
+			.getName());
+
 	private PrintWriter out;
 	private BufferedReader in;
 	private Socket socket;
-	
+
 	public ServerThread(Socket socket) {
-		this.socket=socket;
+		this.socket = socket;
 	}
 
 	@Override
 	public void run() {
 		initStreams();
 		try {
-			String line="";
-			Command cmd;
-			Gson translator=new Gson();
-			while((line=in.readLine())!=null){
+			String line = "";
+			Command prototype;
+			Gson translator = new Gson();
+			boolean _break = false;
+			while (!_break && (line = in.readLine()) != null) {
+				// TODO Try to move this code another file like Protocol or like this
 				// Read the command and the process it
-				cmd=translator.fromJson(line, Command.class);
-				if(cmd instanceof MessageCommad){
-					System.out.println("Ha llegado un mensaje");
+				prototype = translator.fromJson(line, Command.class);
+				// Here begins the protocol implementation
+				switch (prototype.getName()) {
+				// We will to process the control commands here
+				case "message":
+					logger.info("Message received, it says:"
+							+ prototype.getParameter("body"));
+					break;
+				case "enable":
+					// Here we can enable to a student to write in the
+					// whiteboard
+					switch (prototype.getParameter("feature").toString()) {
+					case "talk":
+						break;
+					case "write":
+						break;
+					}
+					break;
+				case "disable":
+					// Here we can disable to a student to write in the
+					// whiteboard
+					switch (prototype.getParameter("feature").toString()) {
+					case "talk":
+						break;
+					case "write":
+						break;
+					}
+					break;
+				case "exit":
+					logger.info("EXIT command was received");
+					// TODO notify to the system that this session is killed
+					_break = true;
+					break;
+				default:
+					// Here we will to resend other commands types to the
+					// clients connected
+					break;
 				}
-				
-				System.out.println("Receiving: "+line);
-				out.println("Returning: "+line);
 			}
-		}catch(EOFException e){
+			closeStreams();
+		} catch (EOFException e) {
 			logger.severe("The connection with client fails");
 			logger.severe(e.getLocalizedMessage());
 			closeStreams();
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	private void closeStreams() {
 		try {
+			logger.info("Killing streams and connection");
 			in.close();
 			out.close();
 			socket.close();
@@ -61,17 +95,18 @@ public class ServerThread extends Thread{
 		} catch (IOException | InterruptedException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	private void initStreams() {
 		try {
-			out=new PrintWriter(socket.getOutputStream(), true);
-			in=new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			out = new PrintWriter(socket.getOutputStream(), true);
+			in = new BufferedReader(new InputStreamReader(
+					socket.getInputStream()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 }
