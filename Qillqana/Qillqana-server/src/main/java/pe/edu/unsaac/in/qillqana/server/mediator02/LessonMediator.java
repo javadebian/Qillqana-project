@@ -1,0 +1,67 @@
+package pe.edu.unsaac.in.qillqana.server.mediator02;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.log4j.Logger;
+import pe.edu.unsaac.in.qillqana.common.model.Teacher;
+import pe.edu.unsaac.in.qillqana.server.mediator02.sessions.Session;
+
+public class LessonMediator {
+    public static final Logger LOGGER=Logger.getLogger(LessonMediator.class.getName());
+    
+    private String idLM;
+    private Teacher teacher;
+    private String topic;
+    private List<Session> sessions;
+
+    public LessonMediator() {
+        sessions=new ArrayList<>();
+    }
+
+    public LessonMediator(String idLM, Teacher teacher) {
+        this.idLM = idLM;
+        this.teacher = teacher;
+    }
+
+    public String getIdLM() {
+        return idLM;
+    }
+
+    public void setIdLM(String idLM) {
+        this.idLM = idLM;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+    
+    public void addSession(Session session){
+        LOGGER.info("Adding a new Session");
+        sessions.add(session);
+    }
+    
+    public synchronized void sendMessage(String message,Session originator){
+        for (Session session : sessions) {
+            if(session!=originator){
+                LOGGER.info("Sending message to: "+session.getIdSession());
+                session.sendRemoteMessage(message);
+            }
+        }
+    }
+    
+    public void removeSession(Session session){
+        sessions.remove(session);
+    }
+}
