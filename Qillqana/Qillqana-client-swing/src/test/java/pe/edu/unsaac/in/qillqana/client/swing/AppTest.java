@@ -1,4 +1,4 @@
-package pe.edu.unsaac.edu.in.qillqana.client.swing;
+package pe.edu.unsaac.in.qillqana.client.swing;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
