@@ -56,6 +56,8 @@ public class Session extends Thread{
                     _break=true;
                 }
             }while(!_break);
+            // TODO Close the streams, close the socket and remove the session
+            // mediator and of all mediators if is necesary
         } catch (IOException ex) {
             Logger.getLogger(Session.class.getName()).error(ex);
         }

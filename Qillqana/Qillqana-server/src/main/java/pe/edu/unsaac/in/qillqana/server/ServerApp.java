@@ -11,7 +11,7 @@ import org.apache.log4j.Logger;
 
 public class ServerApp {
 
-    private static Logger logger = Logger.getLogger(ServerApp.class.getName());
+    private static final Logger logger = Logger.getLogger(ServerApp.class.getName());
 
     public static void main(String[] args) throws IOException {
         PropertyConfigurator.configure("log4j.properties");

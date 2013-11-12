@@ -32,8 +32,6 @@ public class Server {
                  mediator.addSession(session);
                  session.start();
                  i++;
-//                ServerThread sthread = new ServerThread(ssocket.accept());
-//                sthread.start();
             }
         } catch (IOException e) {
             logger.error(e.getMessage());
