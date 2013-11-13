@@ -36,7 +36,6 @@
     <modules>
         <module>Qillqana-common</module>
         <module>Qillqana-server</module>
-        <module>Qillqana-client-common</module>
         <module>Qillqana-client-swing</module>
     </modules>
     <build>

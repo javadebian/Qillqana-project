@@ -36,7 +36,9 @@ public class MainFrm extends JFrame implements ActionListener{
         getContentPane().setLayout(new BorderLayout());
         
         txtOut=new JTextArea();
+        txtOut.setEditable(false);
         txtIn=new JTextField();
+        txtIn.requestFocus();
         
         btnSend=new JButton("Send");
         btnSend.addActionListener(this);
@@ -75,7 +77,7 @@ public class MainFrm extends JFrame implements ActionListener{
         if(ae.getActionCommand().equals("SEND")){
             if(!txtIn.getText().isEmpty()){
                 chatSuscriptor.sendMessage(txtIn.getText());
-                txtOut.append(txtIn.getText());
+                txtOut.append(txtIn.getText()+"\n");
                 txtIn.setText("");
             }
         }else if (ae.getActionCommand().equals("CLOSE")){
