@@ -1,4 +1,4 @@
-package pe.edu.unsaac.in.qillqana.server.mediator02.sessions;
+package pe.edu.unsaac.in.qillqana.server.mediator.sessions;
 
 import com.google.gson.Gson;
 import java.io.BufferedReader;
@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import org.apache.log4j.Logger;
 import pe.edu.unsaac.in.qillqana.common.command.Command;
-import pe.edu.unsaac.in.qillqana.server.mediator02.LessonMediator;
+import pe.edu.unsaac.in.qillqana.server.mediator.LessonMediator;
 
 public class Session extends Thread{
     

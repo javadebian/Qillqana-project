@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 
 import org.apache.log4j.Logger;
-import pe.edu.unsaac.in.qillqana.server.mediator02.LessonMediator;
-import pe.edu.unsaac.in.qillqana.server.mediator02.sessions.Session;
+import pe.edu.unsaac.in.qillqana.server.mediator.LessonMediator;
+import pe.edu.unsaac.in.qillqana.server.mediator.sessions.Session;
 
 public class Server {
 

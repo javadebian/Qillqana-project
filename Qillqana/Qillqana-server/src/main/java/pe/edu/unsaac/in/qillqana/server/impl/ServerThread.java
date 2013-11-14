@@ -12,8 +12,6 @@ import pe.edu.unsaac.in.qillqana.common.command.Command;
 
 import com.google.gson.Gson;
 import pe.edu.unsaac.in.qillqana.common.command.LoginCommand;
-import pe.edu.unsaac.in.qillqana.server.mediator.SessionSingleton;
-import pe.edu.unsaac.in.qillqana.server.mediator.StudentSession;
 
 public class ServerThread extends Thread {
 
@@ -53,17 +51,17 @@ public class ServerThread extends Thread {
                         LoginCommand login=(LoginCommand)prototype;
                         // This line simulates the login process for a teacher
                         if(login.getUser().equals("profesor")){
-                            SessionSingleton.getInstance().createMediator("1");
+//                            SessionSingleton.getInstance().createMediator("1");
                         }
                         if(login.getUser().equals("alumno")){
                             // By now we put all students to first session
-                            SessionSingleton.getInstance().addStudentSession("1", new StudentSession(null, in, out));
+//                            SessionSingleton.getInstance().addStudentSession("1", new StudentSession(null, in, out));
                         }
                         break;
                     case "session_list":
                         // Return the list session from the server, often retrieve to student sessions
-                        String list=translator.toJson(SessionSingleton.getInstance().getAllTeachers());
-                        out.println(list);
+//                        String list=translator.toJson(SessionSingleton.getInstance().getAllTeachers());
+//                        out.println(list);
                         break;
                     case "session":
                         // Change a user from the temp list to Correct session list
