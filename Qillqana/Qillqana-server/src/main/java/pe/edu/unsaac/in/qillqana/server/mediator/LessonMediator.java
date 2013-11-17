@@ -2,11 +2,15 @@ package pe.edu.unsaac.in.qillqana.server.mediator;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.log4j.Logger;
-import pe.edu.unsaac.in.qillqana.common.model.Teacher;
-import pe.edu.unsaac.in.qillqana.server.mediator.sessions.Session;
 
-public class LessonMediator {
+import org.apache.log4j.Logger;
+
+import pe.edu.unsaac.in.qillqana.common.command.Command;
+import pe.edu.unsaac.in.qillqana.common.mediator.Mediator;
+import pe.edu.unsaac.in.qillqana.common.mediator.Session;
+import pe.edu.unsaac.in.qillqana.common.model.Teacher;
+
+public class LessonMediator implements Mediator{
     public static final Logger LOGGER=Logger.getLogger(LessonMediator.class.getName());
     
     private String idLM;
@@ -52,11 +56,13 @@ public class LessonMediator {
         sessions.add(session);
     }
     
-    public synchronized void sendMessage(String message,Session originator){
+    public synchronized void sendMessage(Command command,Session originator){
         for (Session session : sessions) {
             if(session!=originator){
                 LOGGER.info("Sending message to: "+session.getIdSession());
-                session.sendRemoteMessage(message);
+                // TODO Revisitar esta parte para depurar esto
+                session.receiveCommand(command);
+//                session.sendRemoteMessage(GsonUtils.toJson(command));
             }
         }
     }

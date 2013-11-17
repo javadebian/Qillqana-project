@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.net.ServerSocket;
 
 import org.apache.log4j.Logger;
+
+import pe.edu.unsaac.in.qillqana.common.mediator.Mediator;
+import pe.edu.unsaac.in.qillqana.common.mediator.Session;
 import pe.edu.unsaac.in.qillqana.server.mediator.LessonMediator;
-import pe.edu.unsaac.in.qillqana.server.mediator.sessions.Session;
+import pe.edu.unsaac.in.qillqana.server.mediator.LessonSession;
 
 public class Server {
 
@@ -25,13 +28,18 @@ public class Server {
         try {
             ssocket = new ServerSocket(port);
             logger.info("Server started");
-            LessonMediator mediator=new LessonMediator();
-            int i=1;
+            Mediator mediator = new LessonMediator();
+            int i = 1;
             while (true) {
-                 Session session=new Session(i, mediator, ssocket.accept());
-                 mediator.addSession(session);
-                 session.start();
-                 i++;
+            	// TODO Implements additional process commands to create a new mediator or put another existing mediator
+//                LessonSession session = new LessonSession(i, mediator, ssocket.accept());
+//                mediator.addSession(session);
+//                session.start();
+//                i++;
+            	Session session = new LessonSession(i, mediator, ssocket.accept());
+                mediator.addSession(session);
+                session.start();
+                i++;
             }
         } catch (IOException e) {
             logger.error(e.getMessage());
@@ -39,6 +47,12 @@ public class Server {
     }
 
     public void initServerBGMode() {
-
+    	new Runnable() {
+			
+			@Override
+			public void run() {
+				initServer();				
+			}
+		};
     }
 }

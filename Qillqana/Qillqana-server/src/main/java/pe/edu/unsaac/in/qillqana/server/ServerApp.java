@@ -4,10 +4,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import pe.edu.unsaac.in.qillqana.server.impl.Server;
-
-import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
+import pe.edu.unsaac.in.qillqana.server.impl.Server;
 
 public class ServerApp {
 
@@ -15,7 +15,7 @@ public class ServerApp {
 
     public static void main(String[] args) throws IOException {
         PropertyConfigurator.configure("log4j.properties");
-        // Read configuration parameter from the file<
+        // Read configuration parameter from the file
         logger.info("Reading configuration parameters");
         Properties conf = new Properties();
         FileInputStream fis = new FileInputStream("conf/configuration.properties");

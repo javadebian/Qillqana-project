@@ -4,17 +4,24 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import pe.edu.unsaac.in.qillqana.client.swing.ui.mediator.suscriptors.ChatSuscriptor;
-import pe.edu.unsaac.in.qillqana.client.swing.ui.mediator.Mediator;
+
+import pe.edu.unsaac.in.qillqana.client.swing.ui.mediator.UIChatSession;
+import pe.edu.unsaac.in.qillqana.common.command.Command;
+import pe.edu.unsaac.in.qillqana.common.mediator.Mediator;
 
 public class MainFrm extends JFrame implements ActionListener{
-    private JPanel pnlTitle;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8149721424455090374L;
+	private JPanel pnlTitle;
     private JPanel pnlContent;
     private JPanel pnlButtons;
     
@@ -26,7 +33,7 @@ public class MainFrm extends JFrame implements ActionListener{
     
     private JLabel lblTitle;
     
-    private ChatSuscriptor chatSuscriptor;
+    private UIChatSession chatSession;
 
     public MainFrm(Mediator mediator){
         initGUI();
@@ -76,7 +83,10 @@ public class MainFrm extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         if(ae.getActionCommand().equals("SEND")){
             if(!txtIn.getText().isEmpty()){
-                chatSuscriptor.sendMessage(txtIn.getText());
+            	Command command=new Command();
+            	command.setName("message");
+            	command.addParameter("value", txtIn.getText());
+                chatSession.sendCommand(command);
                 txtOut.append(txtIn.getText()+"\n");
                 txtIn.setText("");
             }
@@ -86,9 +96,9 @@ public class MainFrm extends JFrame implements ActionListener{
     }
 
     private void initMediator(Mediator mediator) {
-        chatSuscriptor=new ChatSuscriptor(mediator);
-        chatSuscriptor.setTxtIn(txtIn);
-        chatSuscriptor.setTxtOut(txtOut);
-        mediator.addSuscriptor(chatSuscriptor);
+        chatSession=new UIChatSession(mediator);
+        chatSession.setTxtIn(txtIn);
+        chatSession.setTxtOut(txtOut);
+        mediator.addSession(chatSession);
     }   
 }
