@@ -64,7 +64,6 @@ public class LessonSession extends Thread implements Session {
 				command=GsonUtils.toCommand(line);
 				_break=processCommad(command);
 			}
-			// TODO Revisar esta parte para saber si sale al cortar la conexion o enviar un mensaje de salida
 			in.close();
 			out.close();
 			socket.close();
@@ -93,6 +92,7 @@ public class LessonSession extends Thread implements Session {
 		boolean _break=false;
 		switch (command.getName()) {
 		case "exit": // Process "EXIT" Command
+			logger.info("EXIT command received...closing the session");
 			_break=true;
 			break;
 		default:
