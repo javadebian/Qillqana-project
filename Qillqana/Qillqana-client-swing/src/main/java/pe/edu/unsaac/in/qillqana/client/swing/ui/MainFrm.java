@@ -91,6 +91,9 @@ public class MainFrm extends JFrame implements ActionListener{
                 txtIn.setText("");
             }
         }else if (ae.getActionCommand().equals("CLOSE")){
+        	Command command=new Command();
+        	command.setName("exit");
+        	chatSession.sendCommand(command);
             System.exit(0);
         }
     }

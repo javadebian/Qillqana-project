@@ -60,9 +60,7 @@ public class LessonMediator implements Mediator{
         for (Session session : sessions) {
             if(session!=originator){
                 LOGGER.info("Sending message to: "+session.getIdSession());
-                // TODO Revisitar esta parte para depurar esto
                 session.receiveCommand(command);
-//                session.sendRemoteMessage(GsonUtils.toJson(command));
             }
         }
     }

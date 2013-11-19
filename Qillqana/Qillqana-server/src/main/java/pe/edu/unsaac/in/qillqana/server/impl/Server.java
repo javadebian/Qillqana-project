@@ -16,10 +16,6 @@ public class Server {
     private int port;
     private ServerSocket ssocket;
 
-    public Server() {
-        port = 1025;
-    }
-
     public Server(int port) {
         this.port = port;
     }
@@ -32,10 +28,6 @@ public class Server {
             int i = 1;
             while (true) {
             	// TODO Implements additional process commands to create a new mediator or put another existing mediator
-//                LessonSession session = new LessonSession(i, mediator, ssocket.accept());
-//                mediator.addSession(session);
-//                session.start();
-//                i++;
             	Session session = new LessonSession(i, mediator, ssocket.accept());
                 mediator.addSession(session);
                 session.start();

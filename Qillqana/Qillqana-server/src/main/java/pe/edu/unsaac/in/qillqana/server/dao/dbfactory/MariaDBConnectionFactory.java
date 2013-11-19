@@ -2,7 +2,7 @@ package pe.edu.unsaac.in.qillqana.server.dao.dbfactory;
 
 import java.sql.Connection;
 
-public class MariaDBConnectionFactory implements DatabaseFactory{
+public class MariaDBConnectionFactory implements DataBaseFactory{
 
     @Override
     public Connection getConnection() {
