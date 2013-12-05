@@ -8,8 +8,9 @@ public class User {
     private String names;
     private String surnames;
     private String email;
+    private String type;
 
-    public User() {
+	public User() {
     }
 
     public User(int id, String user, String password, String names, String surnames, String email) {
@@ -68,4 +69,12 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 }

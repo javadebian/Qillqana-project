@@ -42,6 +42,7 @@
 		<module>Qillqana-common</module>
 		<module>Qillqana-server</module>
 		<module>Qillqana-client-swing</module>
+		<module>Qillqana-client-groovy</module>
 	</modules>
 	<build>
 		<plugins>

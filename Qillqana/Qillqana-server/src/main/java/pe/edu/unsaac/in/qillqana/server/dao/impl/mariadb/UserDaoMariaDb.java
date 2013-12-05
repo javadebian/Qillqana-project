@@ -30,25 +30,6 @@ public class UserDaoMariaDb implements UserDao {
 		initStatements();
 	}
 
-	private void initStatements() {
-		try {
-			insertStatement = this.connection
-					.prepareStatement("INSERT INTO user(user,password,names,surname,email) VALUES (?,?,?,?,?)");
-			updateStatement = this.connection
-					.prepareStatement("UPDATE user(id,user,password,names,surname,email) SET(?,?,?,?,?,?) where id=?");
-			deleteStatement = this.connection
-					.prepareStatement("DELETE user WHERE id=?");
-			findAllStatement = this.connection
-					.prepareStatement("SELECT * FROM user");
-			findByIdStatement = this.connection
-					.prepareStatement("SELECT * FROM user WHERE id=?");
-			findByUserNameStatement = this.connection
-					.prepareStatement("SELECT * FROM user WHERE user=?");
-		} catch (SQLException e) {
-			logger.error(e.getLocalizedMessage());
-		}
-	}
-
 	@Override
 	public boolean save(User user) {
 		boolean result = true;
@@ -58,6 +39,7 @@ public class UserDaoMariaDb implements UserDao {
 			insertStatement.setString(3, user.getNames());
 			insertStatement.setString(4, user.getSurnames());
 			insertStatement.setString(5, user.getEmail());
+			insertStatement.setString(6, user.getType());
 			insertStatement.executeUpdate();
 			result = true;
 		} catch (SQLException e) {
@@ -77,6 +59,7 @@ public class UserDaoMariaDb implements UserDao {
 			updateStatement.setString(4, user.getNames());
 			updateStatement.setString(5, user.getSurnames());
 			updateStatement.setString(6, user.getEmail());
+			updateStatement.setString(7, user.getType());
 			updateStatement.executeUpdate();
 			result = true;
 		} catch (SQLException e) {
@@ -113,7 +96,7 @@ public class UserDaoMariaDb implements UserDao {
 				user.setNames(result.getString("names"));
 				user.setSurnames(result.getString("surname"));
 				user.setEmail(result.getString("email"));
-				
+				user.setType(result.getString("type"));
 				users.add(user);
 			}
 		} catch (SQLException e) {
@@ -137,6 +120,7 @@ public class UserDaoMariaDb implements UserDao {
 				user.setNames(result.getString("names"));
 				user.setSurnames(result.getString("surname"));
 				user.setEmail(result.getString("email"));
+				user.setType(result.getString("type"));
 			}else{
 				user=null;
 			}
@@ -161,6 +145,7 @@ public class UserDaoMariaDb implements UserDao {
 				user.setNames(result.getString("names"));
 				user.setSurnames(result.getString("surname"));
 				user.setEmail(result.getString("email"));
+				user.setType(result.getString("type"));
 			}else{
 				user=null;
 			}
@@ -170,5 +155,22 @@ public class UserDaoMariaDb implements UserDao {
 		}
 		return user;
 	}
-
+	private void initStatements() {
+		try {
+			insertStatement = this.connection
+					.prepareStatement("INSERT INTO user(user,password,names,surname,email,type) VALUES (?,?,?,?,?,?)");
+			updateStatement = this.connection
+					.prepareStatement("UPDATE user(id,user,password,names,surname,email,type) SET(?,?,?,?,?,?,?) where id=?");
+			deleteStatement = this.connection
+					.prepareStatement("DELETE user WHERE id=?");
+			findAllStatement = this.connection
+					.prepareStatement("SELECT * FROM user");
+			findByIdStatement = this.connection
+					.prepareStatement("SELECT * FROM user WHERE id=?");
+			findByUserNameStatement = this.connection
+					.prepareStatement("SELECT * FROM user WHERE user=?");
+		} catch (SQLException e) {
+			logger.error(e.getLocalizedMessage());
+		}
+	}
 }

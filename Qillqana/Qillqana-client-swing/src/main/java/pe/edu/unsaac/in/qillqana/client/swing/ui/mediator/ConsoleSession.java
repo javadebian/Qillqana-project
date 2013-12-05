@@ -32,20 +32,13 @@ public class ConsoleSession implements Session {
 
 	@Override
 	public String getIdSession() {
-		// TODO Apéndice de método generado automáticamente
 		return null;
 	}
 
 	@Override
-	public void run() {
-		// TODO Apéndice de método generado automáticamente
-
-	}
+	public void run() {}
 
 	@Override
-	public void start() {
-		// TODO Apéndice de método generado automáticamente
-
-	}
+	public void start() {}
 
 }

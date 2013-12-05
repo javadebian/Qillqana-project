@@ -1,22 +1,23 @@
 package pe.edu.unsaac.in.qillqana.common.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Teacher extends User{
-    private String especiality;
-
+    private List<Lesson> lessons;
+    
     public Teacher() {
-    }
-
-    public Teacher(String especiality, int id, String user, String password, String names, String surnames, String email) {
-        super(id, user, password, names, surnames, email);
-        this.especiality = especiality;
-    }
-
-    public String getEspeciality() {
-        return especiality;
-    }
-
-    public void setEspeciality(String especiality) {
-        this.especiality = especiality;
+    	lessons=new ArrayList<>();
     }
     
+    public void addLesson(Lesson lesson){
+    	lessons.add(lesson);
+    }
+    
+    public void removeLesson(Lesson lesson){
+    	lessons.remove(lesson);
+    }
+    public Lesson getLesson(int i){
+    	return lessons.get(i);
+    }
 }

@@ -1,12 +1,45 @@
 package pe.edu.unsaac.in.qillqana.server.dao.dbfactory;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Properties;
 
-public class MariaDBConnectionFactory implements DataBaseFactory{
+import org.apache.log4j.Logger;
 
-    @Override
-    public Connection getConnection() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+import pe.edu.unsaac.in.qillqana.server.singleton.ConfigSingleton;
+
+public class MariaDBConnectionFactory implements ConnectionFactory {
+	public static final Logger logger = Logger
+			.getLogger(MariaDBConnectionFactory.class.getName());
+
+	private static Connection connection = null;
+
+	public MariaDBConnectionFactory() {
+	}
+
+	@Override
+	public Connection getConnection() {
+		if (connection == null) {
+			Properties conf = ConfigSingleton.getInstance();
+			try {
+				Class.forName(conf.getProperty("database.driver"));
+				connection = DriverManager.getConnection(
+						conf.getProperty("database.url"),
+						conf.getProperty("database.user"),
+						conf.getProperty("database.pass"));
+				return connection;
+			} catch (ClassNotFoundException e) {
+				logger.error(e.getLocalizedMessage());
+				return null;
+			} catch (SQLException e) {
+				logger.error(e.getLocalizedMessage());
+				return null;
+			}
+
+		} else {
+			return connection;
+		}
+	}
+
 }

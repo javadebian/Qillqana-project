@@ -1,3 +1,9 @@
 pe/edu/unsaac/in/qillqana/common/command/Command.class
+pe/edu/unsaac/in/qillqana/common/mediator/Mediator.class
+pe/edu/unsaac/in/qillqana/common/mediator/Session.class
+pe/edu/unsaac/in/qillqana/common/command/LoginCommand.class
 pe/edu/unsaac/in/qillqana/common/model/Student.class
+pe/edu/unsaac/in/qillqana/common/model/User.class
 pe/edu/unsaac/in/qillqana/common/model/Teacher.class
+pe/edu/unsaac/in/qillqana/common/gson/GsonUtils.class
+pe/edu/unsaac/in/qillqana/common/command/MessageCommand.class

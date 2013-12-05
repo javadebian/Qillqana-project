@@ -31,6 +31,7 @@ public class SocketSession extends Thread implements Session {
 	@Override
 	public void receiveCommand(Command command) {
 		String str=GsonUtils.toJson(command);
+		logger.info("sending \""+str+"\" to the server");
 		out.println(str);
 	}
 
@@ -47,7 +48,6 @@ public class SocketSession extends Thread implements Session {
 
 	@Override
 	public String getIdSession() {
-		// TODO Apéndice de método generado automáticamente
 		return null;
 	}
 

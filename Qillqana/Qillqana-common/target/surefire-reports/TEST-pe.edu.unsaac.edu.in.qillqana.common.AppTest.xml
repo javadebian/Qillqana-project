@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.018" errors="0" skipped="0" tests="1" name="pe.edu.unsaac.edu.in.qillqana.common.AppTest">
+<testsuite failures="0" time="0.019" errors="0" skipped="0" tests="1" name="pe.edu.unsaac.edu.in.qillqana.common.AppTest">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.60-2.4.3.0.fc20.i386/jre/lib/i386"/>
@@ -24,20 +24,20 @@
 "/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="os.name" value="Linux"/>
-    <property name="classworlds.conf" value="/home/alexove/Documentos/Tesis/03-Desarollo/SRC/.metadata/.plugins/org.eclipse.m2e.launching/launches/m2conf7949610117600433513.tmp"/>
+    <property name="classworlds.conf" value="/home/alexove/Documentos/Tesis/03-Desarollo/SRC/.metadata/.plugins/org.eclipse.m2e.launching/launches/m2conf4775211767132992068.tmp"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.60-2.4.3.0.fc20.i386/jre/lib/i386/server:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.60-2.4.3.0.fc20.i386/jre/lib/i386:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.60-2.4.3.0.fc20.i386/jre/../lib/i386:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.60-2.4.3.0.fc20.i386/jre/lib/i386/client:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.60-2.4.3.0.fc20.i386/jre/lib/i386::/usr/java/packages/lib/i386:/lib:/usr/lib"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="51.0"/>
     <property name="sun.management.compiler" value="HotSpot Tiered Compilers"/>
-    <property name="os.version" value="3.11.8-300.fc20.i686"/>
+    <property name="os.version" value="3.11.9-300.fc20.i686"/>
     <property name="user.home" value="/home/alexove"/>
     <property name="user.timezone" value="America/Lima"/>
     <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.specification.version" value="1.7"/>
     <property name="user.name" value="alexove"/>
-    <property name="java.class.path" value="/home/alexove/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86/configuration/org.eclipse.osgi/bundles/1857/1/.cp/jars/plexus-classworlds-2.4.jar"/>
+    <property name="java.class.path" value="/home/tools/ide/eclipse-kepler/configuration/org.eclipse.osgi/bundles/1222/1/.cp/jars/plexus-classworlds-2.4.jar"/>
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.60-2.4.3.0.fc20.i386/jre"/>
@@ -54,11 +54,11 @@
     <property name="maven.home" value="/home/alexove/Documentos/Tesis/03-Desarollo/SRC/Qillqana/Qillqana-common/EMBEDDED"/>
     <property name="file.separator" value="/"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
-    <property name="maven.bootclasspath" value="/home/alexove/.eclipse/org.eclipse.platform_155965261_linux_gtk_x86/configuration/org.eclipse.osgi/bundles/1857/1/.cp/jars/plexus-classworlds-2.4.jar"/>
+    <property name="maven.bootclasspath" value="/home/tools/ide/eclipse-kepler/configuration/org.eclipse.osgi/bundles/1222/1/.cp/jars/plexus-classworlds-2.4.jar"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.002" classname="pe.edu.unsaac.edu.in.qillqana.common.AppTest" name="testApp"/>
+  <testcase time="0.001" classname="pe.edu.unsaac.edu.in.qillqana.common.AppTest" name="testApp"/>
 </testsuite>
