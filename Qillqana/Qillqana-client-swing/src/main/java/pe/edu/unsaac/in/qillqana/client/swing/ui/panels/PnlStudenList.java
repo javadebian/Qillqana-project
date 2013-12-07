@@ -29,6 +29,10 @@ public class PnlStudenList extends JPanel {
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
+				{"alexove", "Alex Oviedo Solis", Boolean.TRUE, null},
+				{"bernardoha", "Bernardo Hermita\u00F1o", null, Boolean.FALSE},
+				{"kde_tony", "Anthony Mogrovejo", null, Boolean.TRUE},
+				{"echevemaster", "Eduardo Echeverria", null, null},
 			},
 			new String[] {
 				"User Name", "Full Name", "Write", "Block"
@@ -38,7 +42,7 @@ public class PnlStudenList extends JPanel {
 			Class[] columnTypes = new Class[] {
 				String.class, String.class, Boolean.class, Boolean.class
 			};
-			@SuppressWarnings({ "rawtypes", "unchecked" })
+			@SuppressWarnings({ "unchecked", "rawtypes" })
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
