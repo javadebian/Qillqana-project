@@ -11,7 +11,7 @@ public class GsonUtils {
 		return gson.toJson(command);
 	}
 
-	public static Command toCommand(String str) {
-		return gson.fromJson(str, Command.class);
+	public static Command toCommand(String json_string) {
+		return gson.fromJson(json_string, Command.class);
 	}
 }
