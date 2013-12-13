@@ -20,11 +20,11 @@ public class LessonDaoMariaDb implements LessonDao {
 
 	private PreparedStatement insertStatement;
 	private PreparedStatement updateStatement;
-	private PreparedStatement deleteStatement;
-	private PreparedStatement findAllStatement;
-	private PreparedStatement findByIdStatement;
-	private PreparedStatement findByTitleStatement;
-	private PreparedStatement findByTeacherIdStatement;
+//	private PreparedStatement deleteStatement;
+//	private PreparedStatement findAllStatement;
+//	private PreparedStatement findByIdStatement;
+//	private PreparedStatement findByTitleStatement;
+//	private PreparedStatement findByTeacherIdStatement;
 
 	public LessonDaoMariaDb(Connection connection) {
 		this.connection = connection;
@@ -105,16 +105,16 @@ public class LessonDaoMariaDb implements LessonDao {
 					.prepareStatement("INSERT INTO lesson(title,state,id_user) VALUES (?,?,?)");
 			updateStatement = this.connection
 					.prepareStatement("UPDATE lesson(id,title,state,id_user) SET(?,?,?,?) where id=?");
-			deleteStatement = this.connection
-					.prepareStatement("DELETE lesson WHERE id=?");
-			findAllStatement = this.connection
-					.prepareStatement("SELECT * FROM lesson");
-			findByIdStatement = this.connection
-					.prepareStatement("SELECT * FROM lesson WHERE id=?");
-			findByTitleStatement = this.connection
-					.prepareStatement("SELECT * FROM lesson WHERE title=?");
-			findByTitleStatement = this.connection
-					.prepareStatement("SELECT * FROM lesson WHERE id_user=?");
+//			deleteStatement = this.connection
+//					.prepareStatement("DELETE lesson WHERE id=?");
+//			findAllStatement = this.connection
+//					.prepareStatement("SELECT * FROM lesson");
+//			findByIdStatement = this.connection
+//					.prepareStatement("SELECT * FROM lesson WHERE id=?");
+//			findByTitleStatement = this.connection
+//					.prepareStatement("SELECT * FROM lesson WHERE title=?");
+//			findByTitleStatement = this.connection
+//					.prepareStatement("SELECT * FROM lesson WHERE id_user=?");
 		} catch (SQLException e) {
 			logger.error(e.getLocalizedMessage());
 		}
