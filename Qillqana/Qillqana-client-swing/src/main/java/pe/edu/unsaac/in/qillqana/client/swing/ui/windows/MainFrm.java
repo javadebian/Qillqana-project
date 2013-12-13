@@ -5,8 +5,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import pe.edu.unsaac.in.qillqana.client.swing.locale.Messages;
 import pe.edu.unsaac.in.qillqana.client.swing.ui.mediator.MessageMediador;
 import pe.edu.unsaac.in.qillqana.client.swing.ui.panels.PnlChat;
+import pe.edu.unsaac.in.qillqana.client.swing.ui.panels.PnlSlides;
 import pe.edu.unsaac.in.qillqana.client.swing.ui.panels.PnlStudenList;
 import pe.edu.unsaac.in.qillqana.common.mediator.Mediator;
 
@@ -38,6 +40,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
 import javax.swing.JRadioButtonMenuItem;
 
+import java.awt.Toolkit;
+
 public class MainFrm extends JFrame {
     /**
 	 * 
@@ -64,7 +68,7 @@ public class MainFrm extends JFrame {
     private JLabel lblNewLabel;
     @SuppressWarnings("rawtypes")
 	private JComboBox comboBox;
-    private JLabel lblNewLabel_1;
+    private JLabel lblThickness;
     private JToolBar tlbPerspective;
     @SuppressWarnings("rawtypes")
 	private JComboBox cbxPerspective;
@@ -92,12 +96,18 @@ public class MainFrm extends JFrame {
     private JRadioButtonMenuItem mniDraw;
     private JRadioButtonMenuItem mniSlides;
     private ButtonGroup perspectiveGroup;
+    
+    private PnlSlides pnlSlides;
+    private JMenuItem mntmLesson;
+    private JSeparator separator_2;
 
     public MainFrm(Mediator mediator){
     	initGUI();
     }
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initGUI() {
+    	setTitle("Qillqana");
+    	setIconImage(Toolkit.getDefaultToolkit().getImage("images/icon.png")); //$NON-NLS-1$
     	
     	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	
@@ -109,64 +119,91 @@ public class MainFrm extends JFrame {
     	tlbStandar = new JToolBar();
     	pnlToolbar.add(tlbStandar);
     	
-    	btnNew = new JButton("");
-    	btnNew.setIcon(new ImageIcon("/home/alexove/Documentos/Tesis/03-Desarollo/SRC/Qillqana/Qillqana-client-swing/images/_22_new.png"));
+    	btnNew = new JButton(""); //$NON-NLS-1$
+    	btnNew.setIcon(new ImageIcon("images/_22_new.png")); //$NON-NLS-1$
     	tlbStandar.add(btnNew);
     	
-    	btnOpen = new JButton("");
+    	btnOpen = new JButton(""); //$NON-NLS-1$
     	btnOpen.addActionListener(new ActionListener() {
     		public void actionPerformed(ActionEvent e) {
     			do_btnOpen_actionPerformed(e);
     		}
     	});
     	tlbStandar.add(btnOpen);
-    	btnOpen.setIcon(new ImageIcon("/home/alexove/Documentos/Tesis/03-Desarollo/SRC/Qillqana/Qillqana-client-swing/images/_22_open.png"));
+    	btnOpen.setIcon(new ImageIcon("images/_22_open.png")); //$NON-NLS-1$
     	
-    	btnSave = new JButton("");
+    	btnSave = new JButton(""); //$NON-NLS-1$
     	btnSave.addActionListener(new ActionListener() {
     		public void actionPerformed(ActionEvent e) {
     			do_btnSave_actionPerformed(e);
     		}
     	});
-    	btnSave.setIcon(new ImageIcon("/home/alexove/Documentos/Tesis/03-Desarollo/SRC/Qillqana/Qillqana-client-swing/images/_22_save.png"));
+    	btnSave.setIcon(new ImageIcon("images/_22_save.png")); //$NON-NLS-1$
     	tlbStandar.add(btnSave);
     	
-    	btnLock = new JButton("");
-    	btnLock.setIcon(new ImageIcon("/home/alexove/Documentos/Tesis/03-Desarollo/SRC/Qillqana/Qillqana-client-swing/images/_22_lock.png"));
+    	btnLock = new JButton(""); //$NON-NLS-1$
+    	btnLock.setIcon(new ImageIcon("images/_22_lock.png")); //$NON-NLS-1$
     	tlbStandar.add(btnLock);
     	
     	tlbDraw = new JToolBar();
     	pnlToolbar.add(tlbDraw);
     	
-    	btnDraw = new JButton("");
-    	btnDraw.setIcon(new ImageIcon("/home/alexove/Documentos/Tesis/03-Desarollo/SRC/Qillqana/Qillqana-client-swing/images/_22_draw.png"));
+    	btnDraw = new JButton(""); //$NON-NLS-1$
+    	btnDraw.addActionListener(new ActionListener() {
+    		public void actionPerformed(ActionEvent arg0) {
+    			do_btnDraw_actionPerformed(arg0);
+    		}
+    	});
+    	btnDraw.setIcon(new ImageIcon("images/_22_draw.png")); //$NON-NLS-1$
     	tlbDraw.add(btnDraw);
     	
-    	btnStroke = new JButton("");
-    	btnStroke.setIcon(new ImageIcon("/home/alexove/Documentos/Tesis/03-Desarollo/SRC/Qillqana/Qillqana-client-swing/images/_22_line.png"));
+    	btnStroke = new JButton(""); //$NON-NLS-1$
+    	btnStroke.addActionListener(new ActionListener() {
+    		public void actionPerformed(ActionEvent arg0) {
+    			do_btnStroke_actionPerformed(arg0);
+    		}
+    	});
+    	btnStroke.setIcon(new ImageIcon("images/_22_line.png")); //$NON-NLS-1$
     	tlbDraw.add(btnStroke);
     	
-    	btnColor = new JButton("");
+    	btnColor = new JButton(""); //$NON-NLS-1$
     	btnColor.addActionListener(new ActionListener() {
     		public void actionPerformed(ActionEvent e) {
     			do_btnColor_actionPerformed(e);
     		}
     	});
-    	btnColor.setIcon(new ImageIcon("/home/alexove/Documentos/Tesis/03-Desarollo/SRC/Qillqana/Qillqana-client-swing/images/_22_color.png"));
+    	btnColor.setIcon(new ImageIcon("images/_22_color.png")); //$NON-NLS-1$
     	tlbDraw.add(btnColor);
     	
-    	lblNewLabel_1 = new JLabel("Thickness");
-    	tlbDraw.add(lblNewLabel_1);
+    	lblThickness = new JLabel(Messages.getString("stroke.thickness")); //$NON-NLS-1$
+    	tlbDraw.add(lblThickness);
     	
     	comboBox = new JComboBox();
-    	comboBox.setModel(new DefaultComboBoxModel(new String[] {"5", "10", "15", "20", "25", "30"}));
+    	comboBox.setModel(new DefaultComboBoxModel(new String[] {"5", "10", "15", "20", "25", "30"})); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$
     	tlbDraw.add(comboBox);
+    	
+    	tlbSlides = new JToolBar();
+    	pnlToolbar.add(tlbSlides);
+    	
+    	btnUpload = new JButton(""); //$NON-NLS-1$
+    	btnUpload.setIcon(new ImageIcon("images/_22_upload.png")); //$NON-NLS-1$
+    	tlbSlides.add(btnUpload);
+    	
+    	btnBack = new JButton(""); //$NON-NLS-1$
+    	btnBack.setIcon(new ImageIcon("images/_22_back.png")); //$NON-NLS-1$
+    	tlbSlides.add(btnBack);
+    	
+    	btnNext = new JButton(""); //$NON-NLS-1$
+    	btnNext.setIcon(new ImageIcon("images/_22_next.png")); //$NON-NLS-1$
+    	tlbSlides.add(btnNext);
+    	
+    	tlbSlides.setVisible(false);
     	
     	tlbSound = new JToolBar();
     	pnlToolbar.add(tlbSound);
     	
-    	lblNewLabel = new JLabel("");
-    	lblNewLabel.setIcon(new ImageIcon("/home/alexove/Documentos/Tesis/03-Desarollo/SRC/Qillqana/Qillqana-client-swing/images/_22_microphone.png"));
+    	lblNewLabel = new JLabel(""); //$NON-NLS-1$
+    	lblNewLabel.setIcon(new ImageIcon("images/_22_microphone.png")); //$NON-NLS-1$
     	tlbSound.add(lblNewLabel);
     	
     	slider = new JSlider();
@@ -176,31 +213,16 @@ public class MainFrm extends JFrame {
     	pnlToolbar.add(tlbPerspective);
     	
     	cbxPerspective = new JComboBox();
-    	cbxPerspective.setModel(new DefaultComboBoxModel(new String[] {"Drawing", "Slides"}));
+    	cbxPerspective.setModel(new DefaultComboBoxModel(new String[] {Messages.getString("mode.drawing"), Messages.getString("mode.slide")})); //$NON-NLS-1$ //$NON-NLS-2$
     	tlbPerspective.add(cbxPerspective);
     	
-    	btnApplyPerspective = new JButton("Apply");
+    	btnApplyPerspective = new JButton(Messages.getString("label.apply")); //$NON-NLS-1$
     	btnApplyPerspective.addActionListener(new ActionListener() {
     		public void actionPerformed(ActionEvent e) {
-    			do_btnNewButton_actionPerformed(e);
+    			do_btnApply_actionPerformed(e);
     		}
     	});
     	tlbPerspective.add(btnApplyPerspective);
-    	
-    	tlbSlides = new JToolBar();
-    	pnlToolbar.add(tlbSlides);
-    	
-    	btnUpload = new JButton("");
-    	btnUpload.setIcon(new ImageIcon("/home/alexove/Documentos/Tesis/03-Desarollo/SRC/Qillqana/Qillqana-client-swing/images/_22_upload.png"));
-    	tlbSlides.add(btnUpload);
-    	
-    	btnBack = new JButton("");
-    	btnBack.setIcon(new ImageIcon("/home/alexove/Documentos/Tesis/03-Desarollo/SRC/Qillqana/Qillqana-client-swing/images/_22_back.png"));
-    	tlbSlides.add(btnBack);
-    	
-    	btnNext = new JButton("");
-    	btnNext.setIcon(new ImageIcon("/home/alexove/Documentos/Tesis/03-Desarollo/SRC/Qillqana/Qillqana-client-swing/images/_22_next.png"));
-    	tlbSlides.add(btnNext);
     	
     	pnlStatusbar = new JPanel();
     	getContentPane().add(pnlStatusbar, BorderLayout.SOUTH);
@@ -212,13 +234,13 @@ public class MainFrm extends JFrame {
     	menuBar = new JMenuBar();
     	setJMenuBar(menuBar);
     	
-    	mnFile = new JMenu("File");
+    	mnFile = new JMenu(Messages.getString("label.file")); //$NON-NLS-1$
     	menuBar.add(mnFile);
     	
-    	mniNew = new JMenuItem("New");
+    	mniNew = new JMenuItem(Messages.getString("label.new")); //$NON-NLS-1$
     	mnFile.add(mniNew);
     	
-    	mniOpen = new JMenuItem("Open");
+    	mniOpen = new JMenuItem(Messages.getString("label.open")); //$NON-NLS-1$
     	mniOpen.addActionListener(new ActionListener() {
     		public void actionPerformed(ActionEvent e) {
     			do_mntmOpen_actionPerformed(e);
@@ -229,16 +251,22 @@ public class MainFrm extends JFrame {
     	separator = new JSeparator();
     	mnFile.add(separator);
     	
-    	mniSave = new JMenuItem("Save");
+    	mniSave = new JMenuItem(Messages.getString("label.save")); //$NON-NLS-1$
     	mnFile.add(mniSave);
     	
-    	mniSaveAs = new JMenuItem("Save as ...");
+    	mniSaveAs = new JMenuItem(Messages.getString("label.save_as")); //$NON-NLS-1$
     	mnFile.add(mniSaveAs);
+    	
+    	separator_2 = new JSeparator();
+    	mnFile.add(separator_2);
+    	
+    	mntmLesson = new JMenuItem(Messages.getString("lesson.title"));
+    	mnFile.add(mntmLesson);
     	
     	separator_1 = new JSeparator();
     	mnFile.add(separator_1);
     	
-    	mniExit = new JMenuItem("Exit");
+    	mniExit = new JMenuItem(Messages.getString("label.exit")); //$NON-NLS-1$
     	mniExit.addActionListener(new ActionListener() {
     		public void actionPerformed(ActionEvent e) {
     			do_mntmExit_actionPerformed(e);
@@ -246,19 +274,29 @@ public class MainFrm extends JFrame {
     	});
     	mnFile.add(mniExit);
     	
-    	mnEdit = new JMenu("Edit");
+    	mnEdit = new JMenu(Messages.getString("label.edit")); //$NON-NLS-1$
     	menuBar.add(mnEdit);
     	
-    	mniPreferences = new JMenuItem("Preferences");
+    	mniPreferences = new JMenuItem(Messages.getString("label.preferences")); //$NON-NLS-1$
+    	mniPreferences.addActionListener(new ActionListener() {
+    		public void actionPerformed(ActionEvent e) {
+    			do_mniPreferences_actionPerformed(e);
+    		}
+    	});
     	mnEdit.add(mniPreferences);
     	
-    	mniConfiguration = new JMenuItem("Configuration");
+    	mniConfiguration = new JMenuItem(Messages.getString("label.config")); //$NON-NLS-1$
+    	mniConfiguration.addActionListener(new ActionListener() {
+    		public void actionPerformed(ActionEvent arg0) {
+    			do_mniConfiguration_actionPerformed(arg0);
+    		}
+    	});
     	mnEdit.add(mniConfiguration);
     	
-    	mnPerspective = new JMenu("Perspective");
+    	mnPerspective = new JMenu(Messages.getString("label.perspective")); //$NON-NLS-1$
     	menuBar.add(mnPerspective);
     	
-    	mniDraw = new JRadioButtonMenuItem("Drawing");
+    	mniDraw = new JRadioButtonMenuItem(Messages.getString("mode.drawing")); //$NON-NLS-1$
     	mniDraw.addActionListener(new ActionListener() {
     		public void actionPerformed(ActionEvent arg0) {
     			do_rdbtnmntmDraw_actionPerformed(arg0);
@@ -267,7 +305,7 @@ public class MainFrm extends JFrame {
     	mniDraw.setSelected(true);
     	mnPerspective.add(mniDraw);
     	
-    	mniSlides = new JRadioButtonMenuItem("Slides");
+    	mniSlides = new JRadioButtonMenuItem(Messages.getString("mode.slide")); //$NON-NLS-1$
     	mniSlides.addActionListener(new ActionListener() {
     		public void actionPerformed(ActionEvent e) {
     			do_mniSlides_actionPerformed(e);
@@ -280,13 +318,13 @@ public class MainFrm extends JFrame {
     	perspectiveGroup.add(mniDraw);
     	perspectiveGroup.add(mniSlides);
     	
-    	mnHelp = new JMenu("Help");
+    	mnHelp = new JMenu(Messages.getString("label.help")); //$NON-NLS-1$
     	menuBar.add(mnHelp);
     	
-    	mniHelpContents = new JMenuItem("Help contents");
+    	mniHelpContents = new JMenuItem(Messages.getString("label.helpcontents")); //$NON-NLS-1$
     	mnHelp.add(mniHelpContents);
     	
-    	mniAbout = new JMenuItem("About");
+    	mniAbout = new JMenuItem(Messages.getString("label.about")); //$NON-NLS-1$
     	mnHelp.add(mniAbout);
     	
     	panel = new JPanel();
@@ -303,18 +341,18 @@ public class MainFrm extends JFrame {
     	panel_1 = new JPanel();
     	getContentPane().add(panel_1, BorderLayout.WEST);
     	
-    	tlbSlides.setVisible(false);
+    	pnlSlides=new PnlSlides();
     	
     	pack();
     	setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
      
 	protected void do_btnColor_actionPerformed(ActionEvent e) {
-		Color color=JColorChooser.showDialog(this, "Color", Color.BLACK);
+		Color color=JColorChooser.showDialog(this, Messages.getString("stroke.color"), Color.BLACK); //$NON-NLS-1$
 		System.out.println(color);
 	}
 	protected void do_mntmExit_actionPerformed(ActionEvent e) {
-		int option=JOptionPane.showConfirmDialog(this, "Are you sure you want to quit?", "Exit", JOptionPane.YES_NO_OPTION);
+		int option=JOptionPane.showConfirmDialog(this, Messages.getString("label.question.exit"), Messages.getString("label.exit"), JOptionPane.YES_NO_OPTION); //$NON-NLS-1$ //$NON-NLS-2$
 		if(option==JOptionPane.YES_OPTION){
 			System.exit(0);
 		}
@@ -335,21 +373,43 @@ public class MainFrm extends JFrame {
 		if(mniDraw.isSelected()){
 			tlbDraw.setVisible(true);
 			tlbSlides.setVisible(false);
+			pnlContent.remove(pnlSlides);
+			pnlContent.updateUI();
 		}
 	}
 	protected void do_mniSlides_actionPerformed(ActionEvent e) {
 		if(mniSlides.isSelected()){
 			tlbDraw.setVisible(false);
 			tlbSlides.setVisible(true);
+			pnlContent.add(pnlSlides);
 		}
 	}
-	protected void do_btnNewButton_actionPerformed(ActionEvent e) {
-		if(cbxPerspective.getSelectedItem().toString().equalsIgnoreCase("Drawing")){
+	protected void do_btnApply_actionPerformed(ActionEvent e) {
+		if(cbxPerspective.getSelectedItem().toString().equalsIgnoreCase(Messages.getString("mode.drawing"))){ //$NON-NLS-1$
 			tlbDraw.setVisible(true);
 			tlbSlides.setVisible(false);
-		}else if(cbxPerspective.getSelectedItem().toString().equalsIgnoreCase("Slides")){
+			pnlContent.remove(pnlSlides);
+			pnlContent.updateUI();
+		}else if(cbxPerspective.getSelectedItem().toString().equalsIgnoreCase(Messages.getString("mode.slide"))){ //$NON-NLS-1$
 			tlbDraw.setVisible(false);
 			tlbSlides.setVisible(true);
+			pnlContent.add(pnlSlides);
 		}
+	}
+	protected void do_mniConfiguration_actionPerformed(ActionEvent arg0) {
+		ConfigWindow c=new ConfigWindow(this, true);
+		c.setVisible(true);
+	}
+	protected void do_mniPreferences_actionPerformed(ActionEvent e) {
+		PreferenceWindow p=new PreferenceWindow(this,true);
+		p.setVisible(true);
+	}
+	protected void do_btnDraw_actionPerformed(ActionEvent arg0) {
+		BrushSelectWindow b=new BrushSelectWindow(this, true);
+		b.setVisible(true);
+	}
+	protected void do_btnStroke_actionPerformed(ActionEvent arg0) {
+		StrokeStyleWindow s=new StrokeStyleWindow(this, true);
+		s.setVisible(true);
 	}
 }

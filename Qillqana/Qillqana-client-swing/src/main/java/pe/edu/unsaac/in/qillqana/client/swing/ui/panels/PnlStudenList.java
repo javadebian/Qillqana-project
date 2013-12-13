@@ -7,6 +7,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import pe.edu.unsaac.in.qillqana.client.swing.locale.Messages;
+
 public class PnlStudenList extends JPanel {
 	public PnlStudenList() {
 		initGUI();
@@ -25,23 +27,23 @@ public class PnlStudenList extends JPanel {
 
 		scrollPane = new JScrollPane();
 		pnlContent.add(scrollPane);
-		
+
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"alexove", "Alex Oviedo Solis", Boolean.TRUE, null},
-				{"bernardoha", "Bernardo Hermita\u00F1o", null, Boolean.FALSE},
-				{"kde_tony", "Anthony Mogrovejo", null, Boolean.TRUE},
-				{"echevemaster", "Eduardo Echeverria", null, null},
-			},
-			new String[] {
-				"User Name", "Full Name", "Write", "Block"
-			}
-		) {
+				new Object[][] {
+						{ "alexove", "Alex Oviedo Solis", Boolean.TRUE, null },
+						{ "bernardoha", "Bernardo Hermita\u00F1o", null,
+								Boolean.FALSE },
+						{ "kde_tony", "Anthony Mogrovejo", null, Boolean.TRUE },
+						{ "echevemaster", "Eduardo Echeverria", null, null }, },
+				new String[] { Messages.getString("label.username"),
+						Messages.getString("label.fullname"),
+						Messages.getString("label.write"),
+						Messages.getString("label.block") }) {
 			@SuppressWarnings("rawtypes")
-			Class[] columnTypes = new Class[] {
-				String.class, String.class, Boolean.class, Boolean.class
-			};
+			Class[] columnTypes = new Class[] { String.class, String.class,
+					Boolean.class, Boolean.class };
+
 			@SuppressWarnings({ "unchecked", "rawtypes" })
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];

@@ -1,97 +1,84 @@
 package pe.edu.unsaac.in.qillqana.client.swing.ui.windows;
 
-import javax.swing.JDialog;
-import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JTabbedPane;
-import net.miginfocom.swing.MigLayout;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
+import java.awt.Frame;
 
-public class PreferenceWindow extends JDialog {
-	public PreferenceWindow() {
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
+
+import net.miginfocom.swing.MigLayout;
+import pe.edu.unsaac.in.qillqana.client.swing.locale.Messages;
+
+public class PreferenceWindow extends DlgBase {
+public PreferenceWindow(Frame owner, boolean modal) {
+		super(owner, modal);
 		initGUI();
 	}
 	private void initGUI() {
 		
-		panel = new JPanel();
-		getContentPane().add(panel, BorderLayout.NORTH);
-		
-		lblTitle = new JLabel("<html><big>Preferences</big></html>");
-		panel.add(lblTitle);
-		
-		panel_1 = new JPanel();
-		getContentPane().add(panel_1, BorderLayout.SOUTH);
-		
-		btnSave = new JButton("Save");
-		panel_1.add(btnSave);
-		
-		btnCancel = new JButton("Cancel");
-		panel_1.add(btnCancel);
+		setOwnTitle(Messages.getString("label.preferences"));
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		getContentPane().add(tabbedPane, BorderLayout.CENTER);
 		
 		pnlPersonalInformation = new JPanel();
-		tabbedPane.addTab("Personal Information", null, pnlPersonalInformation, null);
-		pnlPersonalInformation.setLayout(new MigLayout("", "[][grow]", "[][][]"));
+		tabbedPane.addTab(Messages.getString("personal.title"), null, pnlPersonalInformation, null); //$NON-NLS-1$
+		pnlPersonalInformation.setLayout(new MigLayout("", "[][grow]", "[][][]")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		
-		lblName = new JLabel("Name");
-		pnlPersonalInformation.add(lblName, "cell 0 0,alignx left");
+		lblName = new JLabel(Messages.getString("personal.name")); //$NON-NLS-1$
+		pnlPersonalInformation.add(lblName, "cell 0 0,alignx left"); //$NON-NLS-1$
 		
 		txtName = new JTextField();
-		pnlPersonalInformation.add(txtName, "cell 1 0,growx");
+		pnlPersonalInformation.add(txtName, "cell 1 0,growx"); //$NON-NLS-1$
 		txtName.setColumns(10);
 		
-		lblSurname = new JLabel("Surname");
-		pnlPersonalInformation.add(lblSurname, "cell 0 1,alignx left");
+		lblSurname = new JLabel(Messages.getString("personal.surname")); //$NON-NLS-1$
+		pnlPersonalInformation.add(lblSurname, "cell 0 1,alignx left"); //$NON-NLS-1$
 		
 		txtSurname = new JTextField();
-		pnlPersonalInformation.add(txtSurname, "cell 1 1,growx");
+		pnlPersonalInformation.add(txtSurname, "cell 1 1,growx"); //$NON-NLS-1$
 		txtSurname.setColumns(10);
 		
-		lblEmail = new JLabel("Email");
-		pnlPersonalInformation.add(lblEmail, "cell 0 2,alignx left");
+		lblEmail = new JLabel(Messages.getString("personal.email")); //$NON-NLS-1$
+		pnlPersonalInformation.add(lblEmail, "cell 0 2,alignx left"); //$NON-NLS-1$
 		
 		txtEmail = new JTextField();
-		pnlPersonalInformation.add(txtEmail, "cell 1 2,growx");
+		pnlPersonalInformation.add(txtEmail, "cell 1 2,growx"); //$NON-NLS-1$
 		txtEmail.setColumns(10);
 		
 		pnlSecurity = new JPanel();
-		tabbedPane.addTab("Security", null, pnlSecurity, null);
-		pnlSecurity.setLayout(new MigLayout("", "[][grow]", "[][][]"));
+		tabbedPane.addTab(Messages.getString("label.security"), null, pnlSecurity, null); //$NON-NLS-1$
+		pnlSecurity.setLayout(new MigLayout("", "[][grow]", "[][][]")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		
-		lblUsername = new JLabel("Username");
-		pnlSecurity.add(lblUsername, "cell 0 0,alignx left");
+		lblUsername = new JLabel(Messages.getString("label.username")); //$NON-NLS-1$
+		pnlSecurity.add(lblUsername, "cell 0 0,alignx left"); //$NON-NLS-1$
 		
 		txtUser = new JTextField();
-		pnlSecurity.add(txtUser, "cell 1 0,growx");
+		pnlSecurity.add(txtUser, "cell 1 0,growx"); //$NON-NLS-1$
 		txtUser.setColumns(10);
 		
-		lblPassword = new JLabel("Password");
-		pnlSecurity.add(lblPassword, "cell 0 1,alignx left");
+		lblPassword = new JLabel(Messages.getString("label.password")); //$NON-NLS-1$
+		pnlSecurity.add(lblPassword, "cell 0 1,alignx left"); //$NON-NLS-1$
 		
 		txtPassword = new JPasswordField();
-		pnlSecurity.add(txtPassword, "cell 1 1,growx");
+		pnlSecurity.add(txtPassword, "cell 1 1,growx"); //$NON-NLS-1$
 		
-		lblConfirm = new JLabel("Confirm");
-		pnlSecurity.add(lblConfirm, "cell 0 2,alignx left");
+		lblConfirm = new JLabel(Messages.getString("label.password.confirm")); //$NON-NLS-1$
+		pnlSecurity.add(lblConfirm, "cell 0 2,alignx left"); //$NON-NLS-1$
 		
 		txtConfirm = new JPasswordField();
-		pnlSecurity.add(txtConfirm, "cell 1 2,growx");
+		pnlSecurity.add(txtConfirm, "cell 1 2,growx"); //$NON-NLS-1$
+		pack();
+		setLocationRelativeTo(getParent());
 	}
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel panel;
-	private JPanel panel_1;
-	private JLabel lblTitle;
-	private JButton btnSave;
-	private JButton btnCancel;
 	private JTabbedPane tabbedPane;
 	private JPanel pnlPersonalInformation;
 	private JPanel pnlSecurity;

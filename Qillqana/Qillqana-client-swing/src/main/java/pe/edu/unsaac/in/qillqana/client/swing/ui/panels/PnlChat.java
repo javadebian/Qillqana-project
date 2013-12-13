@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import pe.edu.unsaac.in.qillqana.client.swing.locale.Messages;
 import pe.edu.unsaac.in.qillqana.client.swing.ui.mediator.UIChatSession;
 import pe.edu.unsaac.in.qillqana.common.command.Command;
 import pe.edu.unsaac.in.qillqana.common.mediator.Mediator;
@@ -48,7 +49,7 @@ public class PnlChat extends JPanel implements ActionListener {
         txtIn=new JTextField();
         txtIn.requestFocus();
         
-        btnSend=new JButton("Send");
+        btnSend=new JButton(Messages.getString("label.send"));
         btnSend.addActionListener(this);
         btnSend.setActionCommand("SEND");
         

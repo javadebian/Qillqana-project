@@ -4,9 +4,14 @@ import java.awt.Frame;
 
 import javax.swing.JDialog;
 import javax.swing.JPanel;
+
 import java.awt.BorderLayout;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
+import pe.edu.unsaac.in.qillqana.client.swing.locale.Messages;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -35,13 +40,13 @@ public class DlgBase extends JDialog{
 		pnlTitle = new JPanel();
 		getContentPane().add(pnlTitle, BorderLayout.NORTH);
 		
-		lblTitle = new JLabel("<html><big>Title</big></html>");
+		lblTitle = new JLabel("<html><big>Title</big></html>"); //$NON-NLS-1$
 		pnlTitle.add(lblTitle);
 		
 		pnlButtons = new JPanel();
 		getContentPane().add(pnlButtons, BorderLayout.SOUTH);
 		
-		btnOk = new JButton("Ok");
+		btnOk = new JButton(Messages.getString("label.ok")); //$NON-NLS-1$
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				do_btnOk_actionPerformed(arg0);
@@ -49,7 +54,7 @@ public class DlgBase extends JDialog{
 		});
 		pnlButtons.add(btnOk);
 		
-		btnCancel = new JButton("Cancel");
+		btnCancel = new JButton(Messages.getString("label.cancel")); //$NON-NLS-1$
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				do_btnCancel_actionPerformed(e);
@@ -61,7 +66,7 @@ public class DlgBase extends JDialog{
 		getContentPane().add(pnlContent, BorderLayout.CENTER);
 	}
 	protected void setOwnTitle(String title){
-		lblTitle.setText("<html><big>"+title+"</big></html>");
+		lblTitle.setText("<html><big>"+title+"</big></html>"); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 	protected void do_btnOk_actionPerformed(ActionEvent arg0) {
 		this.dispose();

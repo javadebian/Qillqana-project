@@ -1,31 +1,23 @@
 package pe.edu.unsaac.in.qillqana.client.swing.ui.windows;
 
-import javax.swing.JDialog;
-import javax.swing.JPanel;
-
 import java.awt.BorderLayout;
 import java.awt.Frame;
-
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JTabbedPane;
-
-import net.miginfocom.swing.MigLayout;
-
-import javax.swing.JTextField;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ConfigWindow extends JDialog {
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
+
+import net.miginfocom.swing.MigLayout;
+import pe.edu.unsaac.in.qillqana.client.swing.locale.Messages;
+
+public class ConfigWindow extends DlgBase {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel panel;
-	private JPanel panel_1;
-	private JLabel lblTitle;
-	private JButton btnSave;
-	private JButton btnCancel;
+
 	private JTabbedPane tabbedPane;
 	private JPanel pnlGeneral;
 	private JLabel lblHost;
@@ -40,50 +32,27 @@ public class ConfigWindow extends JDialog {
 	
 	private void initGUI() {
 		
-		panel = new JPanel();
-		getContentPane().add(panel, BorderLayout.NORTH);
-		
-		lblTitle = new JLabel("<html><big>Configuration</big></html>");
-		panel.add(lblTitle);
-		
-		panel_1 = new JPanel();
-		getContentPane().add(panel_1, BorderLayout.SOUTH);
-		
-		btnSave = new JButton("Save");
-		btnSave.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				do_btnSave_actionPerformed(e);
-			}
-		});
-		panel_1.add(btnSave);
-		
-		btnCancel = new JButton("Cancel");
-		btnCancel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				do_btnCancel_actionPerformed(e);
-			}
-		});
-		panel_1.add(btnCancel);
+		setOwnTitle(Messages.getString("label.config"));
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		getContentPane().add(tabbedPane, BorderLayout.CENTER);
 		
 		pnlGeneral = new JPanel();
-		tabbedPane.addTab("General", null, pnlGeneral, null);
-		pnlGeneral.setLayout(new MigLayout("", "[][grow]", "[][]"));
+		tabbedPane.addTab(Messages.getString("label.general"), null, pnlGeneral, null); //$NON-NLS-1$
+		pnlGeneral.setLayout(new MigLayout(Messages.getString("ConfigWindow.4"), "[][grow]", "[][]")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		
-		lblHost = new JLabel("Server name / IP");
-		pnlGeneral.add(lblHost, "cell 0 0,alignx left");
+		lblHost = new JLabel(Messages.getString("config.host")); //$NON-NLS-1$
+		pnlGeneral.add(lblHost, "cell 0 0,alignx left"); //$NON-NLS-1$
 		
 		txtHost = new JTextField();
-		pnlGeneral.add(txtHost, "cell 1 0,growx");
+		pnlGeneral.add(txtHost, "cell 1 0,growx"); //$NON-NLS-1$
 		txtHost.setColumns(10);
 		
-		lblPort = new JLabel("Port");
-		pnlGeneral.add(lblPort, "cell 0 1,alignx left");
+		lblPort = new JLabel(Messages.getString("config.port")); //$NON-NLS-1$
+		pnlGeneral.add(lblPort, "cell 0 1,alignx left"); //$NON-NLS-1$
 		
 		txtPort = new JTextField();
-		pnlGeneral.add(txtPort, "cell 1 1,growx");
+		pnlGeneral.add(txtPort, "cell 1 1,growx"); //$NON-NLS-1$
 		txtPort.setColumns(10);
 		pack();
 		setLocationRelativeTo(getParent());
